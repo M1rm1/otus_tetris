@@ -10,21 +10,31 @@ namespace Tetris
             Console.SetWindowSize(40, 30);
             Console.SetBufferSize(40, 30);
 
-            Figure s = new Stick(3, 1, '*');
-            s.Draw();
-            Thread.Sleep(1000);
-            s.Hide();
-            s.Rotate();
-            s.Draw();
+            FigureGenerator generator = new FigureGenerator(20, 0, '*');
 
-            Thread.Sleep(1500);
-            s.Hide();
-            s.Move(Direction.LEFT);
-            s.Draw();
+            Figure s = null; ;
 
+            while (true)
+            {
+                FigureFall(s, generator);
+
+            }
             
 
             Console.ReadLine();
+        }
+        static void FigureFall(Figure fig, FigureGenerator generator)
+        {
+            fig = generator.GetNewFigure();
+            fig.Draw();
+
+            for (int i = 0; i < 15; i++)
+            {
+                fig.Hide();
+                fig.Move(Direction.DOWN);
+                fig.Draw();
+                Thread.Sleep(200);
+            }
         }
         
     }
