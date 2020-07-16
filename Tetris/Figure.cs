@@ -17,10 +17,12 @@ namespace Tetris
         }
         public void Move(Direction dir)
         {
+            Hide();
             foreach (var p in points)
             {
                 p.Move(dir);
             }
+            Draw();
         }
 
         public abstract void Rotate();
