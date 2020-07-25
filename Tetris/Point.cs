@@ -9,11 +9,13 @@ namespace Tetris
         public int x;
         public int y;
         public char c;
+        private Point point;
 
         public void Draw()
         {
             Console.SetCursorPosition(x, y);
             Console.Write(c);
+            Console.SetCursorPosition(0, 0);
         }
 
         public Point(int a, int b, char sym)
@@ -21,6 +23,13 @@ namespace Tetris
             x = a; y = b; c = sym;
         }
         public Point() { }
+
+        public Point(Point p)
+        {
+            x = p.x;
+            y = p.y;
+            c = p.c;
+        }
 
         internal void Move(Direction dir)
         {
