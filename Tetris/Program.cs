@@ -40,6 +40,11 @@ namespace Tetris
                 case ConsoleKey.DownArrow:
                     currentFigure.TryMove(Direction.DOWN);
                     break;
+                case ConsoleKey.UpArrow:
+                    
+                    currentFigure.TryRotate();
+                    
+                    break;
             }
         }
     }

@@ -55,7 +55,17 @@ namespace Tetris
             return newPoints;
         }
 
-        public abstract void Rotate();
+        internal void TryRotate()
+        {
+            Hide();
+            var clone = Clone();
+            Rotate(clone);
+            if (VerifyPosition(clone))
+                points = clone;
+            Draw();
+        }
+
+        public abstract void Rotate(Point[] pList);
 
         public void Hide()
         {
